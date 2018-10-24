@@ -25,10 +25,12 @@ y = data[:,279]
 ############################## ########################## ##############################
 
 ############################## Cleaning up the data ##############################
-# X_mod = np.copy(X)
+X_mod = np.copy(X)
 # X_mod = np.delete(X,[4,66,91,200,213,238,242,360,372,412],axis=0) #deleting rows manually
-# X_mod = np.delete(X,[9,10,11,12,13,14,198],axis=1) #deleting column[if i want to delete only column]
-X_mod = np.delete(X,[11, 13, 198, 19,67,69,83,131,132,139,141,143,145,151,156,157,164,204,264,274 ],axis=1) #deleting column 
+#X_mod = np.delete(X,[9,10,11,12,13,14,198],axis=1) #deleting column[if i want to delete only column]
+X_mod = np.delete(X,[11,13,198, 19,67,69,83,131,132,139,141,143,145,151,156,157,164,204,264,274 ],axis=1) #deleting 20 column including 0 value column
+#X_mod = np.delete(X,[11, 13, 198 ],axis=1)
+
 
 for i in range(X_mod.shape[1]):
 	sm = np.sum(X_mod[:,i])
@@ -38,8 +40,8 @@ for i in range(X_mod.shape[1]):
 	if(sm==0):
 		print("Column with sum = O data: ",i+1," :::: ",sm)
 	
-	# if(sm<10 and sm>0):
-	# 	print("Sum of the Column ",i+1," :::: ",sm)
+#	if(sm<10 and sm>0):
+#	 	print("Sum of the Column ",i+1," :::: ",sm)
 
 	
 	
@@ -53,16 +55,25 @@ print("After Cleaning Data total Attribute: ", X_mod.shape[1])
 ############################## ########################## ##############################
 
 ############################## Modifying Y data ##############################
+#main y value conversion
 
+for k in range(y.shape[0]):
+	if(y[k]>1):
+		y[k]=0
+        
+        
 y_mod = np.copy(y)
 for k in range(y.shape[0]):
 	if(y_mod[k]>1):
 		y_mod[k]=0
-# print(y)
-# print(y_mod) ### if y[k] == 0 ? then it is abnormal signal, and if it is 1 then normal signal ###
+#print(y)
+#print(y_mod) ### if y[k] == 0 ? then it is abnormal signal, and if it is 1 then normal signal ###
 
 ############################## ########################## ##############################
-print(X_mod[:,149])
+#print(X_mod[:,(142-1)])
 
-np.savetxt('X_final.out', X_mod, fmt='%1.4e')   # X_mod equal sized 
-np.savetxt('y_final.out', y_mod, fmt='%1.4e')   # X_mod equal sized 
+np.savetxt('X_final.dat', X_mod, fmt='%1.4e')    
+np.savetxt('y_final.dat', y_mod, fmt='%1.4e')   
+
+np.savetxt('X_main.dat', X, fmt='%1.4e')    
+np.savetxt('y_main.dat', y, fmt='%1.4e')
