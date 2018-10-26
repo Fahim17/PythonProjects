@@ -14,7 +14,7 @@ y = np.loadtxt("y_final.dat")
 ############################## data scaling ##############################
 # Normalize data ####{over all accuracy will be reduce}
 #X = preprocessing.normalize(X, norm='l1')
-#X = preprocessing.normalize(X, norm='l2') #ektu better hoy
+X = preprocessing.normalize(X, norm='l2') #ektu better hoy
 
 # Split the data into Training and Testing set
 X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.25,random_state=0)
@@ -26,14 +26,14 @@ X_test = sc.fit_transform(X_test)
 #print(X_test)
 
 ############################## Cross Validation ##############################
-#classifier = nb.GaussianNB() #khubi baje accuracy ashe
+# classifier = nb.GaussianNB() #khubi baje accuracy ashe
 classifier = nb.BernoulliNB()
 scores = cross_val_score(classifier, X, y, cv=10, scoring = 'accuracy')
 print("CV score = ",scores.mean())
 
-#################Fitting logistic regression to the training set#################
+#################Fitting Classifier to the training set#################
 #classifier = nb.GaussianNB() #khubi baje accuricy ashe
-classifier = nb.BernoulliNB() 
+# classifier = nb.BernoulliNB() 
 
 classifier.fit(X_train,y_train)
 # Predicting the Test set results
