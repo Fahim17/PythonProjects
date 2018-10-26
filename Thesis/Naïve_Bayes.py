@@ -2,7 +2,7 @@ import numpy as np
 from sklearn import preprocessing
 from sklearn.preprocessing import StandardScaler
 from sklearn.cross_validation import train_test_split, cross_val_score
-from sklearn.linear_model import LogisticRegression
+import sklearn.naive_bayes as nb
 from sklearn.metrics import confusion_matrix
 
 #X = np.loadtxt("X_main.dat")
@@ -26,13 +26,16 @@ X_test = sc.fit_transform(X_test)
 #print(X_test)
 
 ############################## Cross Validation ##############################
-classifier = LogisticRegression(random_state = 0)
+#classifier = nb.GaussianNB() #khubi baje accuracy ashe
+classifier = nb.BernoulliNB()
 scores = cross_val_score(classifier, X, y, cv=10, scoring = 'accuracy')
 print("CV score = ",scores.mean())
-#################Fitting logistic regression to the training set#################
-classifier = LogisticRegression(random_state = 0)
-classifier.fit(X_train,y_train)
 
+#################Fitting logistic regression to the training set#################
+#classifier = nb.GaussianNB() #khubi baje accuricy ashe
+classifier = nb.BernoulliNB() 
+
+classifier.fit(X_train,y_train)
 # Predicting the Test set results
 y_pred = classifier.predict(X_test)
 
