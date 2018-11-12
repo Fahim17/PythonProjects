@@ -2,7 +2,7 @@ import numpy as np
 from sklearn import preprocessing
 from sklearn.preprocessing import StandardScaler
 from sklearn.cross_validation import train_test_split, cross_val_score
-from sklearn.neural_network import MLPClassifier
+from sklearn import tree
 from sklearn.metrics import confusion_matrix
 
 #X = np.loadtxt("X_main.dat")
@@ -25,14 +25,15 @@ X_train = sc.fit_transform(X_train)
 X_test = sc.fit_transform(X_test)
 #print(X_test)
 
-############################## Cross Validation #############################
-classifier =  MLPClassifier(hidden_layer_sizes=(13,13,13),max_iter=100) #lab a run korate hobe
+############################## Cross Validation ##############################
+
+classifier = tree.DecisionTreeClassifier(criterion="entropy")
 
 scores = cross_val_score(classifier, X, y, cv=10, scoring = 'accuracy')
 print("CV score = ",scores.mean())
 
 #################Fitting Classifier to the training set#################
-
+# classifier = svm.LinearSVC()
 classifier.fit(X_train,y_train)
 # Predicting the Test set results
 y_pred = classifier.predict(X_test)
