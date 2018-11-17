@@ -6,7 +6,7 @@ import sklearn.naive_bayes as nb
 from sklearn.metrics import confusion_matrix
 
 #X = np.loadtxt("X_main.dat")
-#y = np.loadtxt("y_main.dat")
+# y = np.loadtxt("y_main.dat")
 
 X = np.loadtxt("X_final.dat")
 y = np.loadtxt("y_final.dat")
@@ -23,7 +23,7 @@ X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.25,random_state
 sc = StandardScaler()
 X_train = sc.fit_transform(X_train)
 X_test = sc.fit_transform(X_test)
-#print(X_test)
+# #print(X_test)
 
 ############################## Cross Validation ##############################
 # classifier = nb.GaussianNB() #khubi baje accuracy ashe

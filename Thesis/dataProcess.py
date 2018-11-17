@@ -57,17 +57,17 @@ print("After Cleaning Data total Attribute: ", X_mod.shape[1])
 ############################## Modifying Y data ##############################
 #main y value conversion
 
-for k in range(y.shape[0]):
-	if(y[k]>1):
-		y[k]=0
+# for k in range(y.shape[0]):
+# 	if(y[k]>1):
+# 		y[k]=0
         
-        
+#copy of y value conversion        
 y_mod = np.copy(y)
 for k in range(y.shape[0]):
 	if(y_mod[k]>1):
 		y_mod[k]=0
-#print(y)
-#print(y_mod) ### if y[k] == 0 ? then it is abnormal signal, and if it is 1 then normal signal ###
+print(y)
+# print(y_mod) ### if y[k] == 0 ? then it is abnormal signal, and if it is 1 then normal signal ###
 
 ############################## ########################## ##############################
 #print(X_mod[:,(142-1)])

@@ -6,7 +6,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix
 
 #X = np.loadtxt("X_main.dat")
-#y = np.loadtxt("y_main.dat")
+# y = np.loadtxt("y_main.dat")
 
 X = np.loadtxt("X_final.dat")
 y = np.loadtxt("y_final.dat")
@@ -14,7 +14,7 @@ y = np.loadtxt("y_final.dat")
 ############################## data scaling ##############################
 # Normalize data ####{over all accuracy will be reduce}
 #X = preprocessing.normalize(X, norm='l1')
-#X = preprocessing.normalize(X, norm='l2') #ektu better hoy
+X = preprocessing.normalize(X, norm='l2') #ektu better hoy
 
 # Split the data into Training and Testing set
 X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.25,random_state=0)

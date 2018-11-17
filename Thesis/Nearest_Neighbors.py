@@ -6,7 +6,7 @@ from sklearn.neighbors.nearest_centroid import NearestCentroid
 from sklearn.metrics import confusion_matrix
 
 #X = np.loadtxt("X_main.dat")
-#y = np.loadtxt("y_main.dat")
+# y = np.loadtxt("y_main.dat")
 
 X = np.loadtxt("X_final.dat")
 y = np.loadtxt("y_final.dat")
