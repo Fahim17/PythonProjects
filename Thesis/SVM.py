@@ -6,11 +6,12 @@ from sklearn import svm
 from sklearn.metrics import confusion_matrix
 
 #X = np.loadtxt("X_main.dat")
-# y = np.loadtxt("y_main.dat")
+y = np.loadtxt("y_main.dat")
 
 X = np.loadtxt("X_final.dat")
-y = np.loadtxt("y_final.dat")
-
+# y = np.loadtxt("y_final.dat")
+##############################
+# X = np.loadtxt("data_ex/X_all_pqrst.dat")
 ############################## data scaling ##############################
 # Normalize data ####{over all accuracy will be reduce}
 #X = preprocessing.normalize(X, norm='l1')
