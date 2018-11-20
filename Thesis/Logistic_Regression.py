@@ -6,12 +6,13 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix
 
 #X = np.loadtxt("X_main.dat")
-y = np.loadtxt("y_main.dat")
+#y = np.loadtxt("y_main.dat")
 ##############################
 # X = np.loadtxt("X_final.dat")
 # y = np.loadtxt("y_final.dat")
 ##############################
-X = np.loadtxt("data_ex/X_DI_pqrst.dat")
+X = np.loadtxt("data_ex/X_all_pqrst.dat")
+y = np.loadtxt("data_ex/y_all_pqrst.dat")
 ############################## data scaling ##############################
 # Normalize data ####{over all accuracy will be reduce}
 #X = preprocessing.normalize(X, norm='l1')
@@ -29,6 +30,7 @@ X_test = sc.fit_transform(X_test)
 ############################## Cross Validation ##############################
 classifier = LogisticRegression(random_state = 0)
 scores = cross_val_score(classifier, X, y, cv=10, scoring = 'accuracy')
+print("Logistic Regression:")
 print("CV score = ",scores.mean())
 #################Fitting logistic regression to the training set#################
 classifier = LogisticRegression(random_state = 0)

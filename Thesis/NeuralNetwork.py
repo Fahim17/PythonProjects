@@ -8,9 +8,11 @@ from sklearn.metrics import confusion_matrix
 #X = np.loadtxt("X_main.dat")
 #y = np.loadtxt("y_main.dat")
 
-X = np.loadtxt("X_final.dat")
-y = np.loadtxt("y_final.dat")
-
+#X = np.loadtxt("X_final.dat")
+#y = np.loadtxt("y_final.dat")
+##############################
+X = np.loadtxt("data_ex/X_all_pqrst.dat")
+y = np.loadtxt("data_ex/y_all_pqrst.dat")
 ############################## data scaling ##############################
 # Normalize data ####{over all accuracy will be reduce}
 #X = preprocessing.normalize(X, norm='l1')
@@ -26,7 +28,7 @@ X_test = sc.fit_transform(X_test)
 #print(X_test)
 
 ############################## Cross Validation #############################
-classifier =  MLPClassifier(hidden_layer_sizes=(13,13,13),max_iter=100) #lab a run korate hobe
+classifier =  MLPClassifier(hidden_layer_sizes=(20,20,20),max_iter=500) #lab a run korate hobe
 
 scores = cross_val_score(classifier, X, y, cv=10, scoring = 'accuracy')
 print("CV score = ",scores.mean())
