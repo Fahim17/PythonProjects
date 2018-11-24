@@ -5,7 +5,7 @@ from sklearn.cross_validation import train_test_split, cross_val_score
 import sklearn.naive_bayes as nb
 from sklearn.metrics import confusion_matrix
 
-#X = np.loadtxt("X_main.dat")
+# X = np.loadtxt("X_main.dat")
 # y = np.loadtxt("y_main.dat")
 
 # X = np.loadtxt("X_final.dat")

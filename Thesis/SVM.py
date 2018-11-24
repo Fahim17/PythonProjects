@@ -5,9 +5,9 @@ from sklearn.cross_validation import train_test_split, cross_val_score
 from sklearn import svm
 from sklearn.metrics import confusion_matrix
 
-#X = np.loadtxt("X_main.dat")
-#y = np.loadtxt("y_main.dat")
-#
+# X = np.loadtxt("X_main.dat")
+# y = np.loadtxt("y_main.dat")
+# #
 #X = np.loadtxt("X_final.dat")
 # y = np.loadtxt("y_final.dat")
 ##############################

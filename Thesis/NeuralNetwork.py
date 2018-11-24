@@ -5,8 +5,8 @@ from sklearn.cross_validation import train_test_split, cross_val_score
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import confusion_matrix
 
-#X = np.loadtxt("X_main.dat")
-#y = np.loadtxt("y_main.dat")
+# X = np.loadtxt("X_main.dat")
+# y = np.loadtxt("y_main.dat")
 
 #X = np.loadtxt("X_final.dat")
 #y = np.loadtxt("y_final.dat")
@@ -28,7 +28,7 @@ X_test = sc.fit_transform(X_test)
 #print(X_test)
 
 ############################## Cross Validation #############################
-classifier =  MLPClassifier(hidden_layer_sizes=(20,20,20),max_iter=500) #lab a run korate hobe
+classifier =  MLPClassifier(hidden_layer_sizes=(50,50,50),max_iter=5000) #lab a run korate hobe
 
 scores = cross_val_score(classifier, X, y, cv=10, scoring = 'accuracy')
 print("CV score = ",scores.mean())

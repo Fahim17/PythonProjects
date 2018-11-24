@@ -20,23 +20,35 @@ y = np.loadtxt("y_main.dat")
 # 		270,271,272,275,276,
 # 		]
 
-## QRS, milivolt, all nodes
-# column = [
-# 		160,161,162, 
-# 		170,171,172, 
-# 		180,181,182, 
-# 		190,191,192,
-# 		200,201,202,
-# 		210,211,212,
-# 		220,221,222,
-# 		230,231,232,
-# 		240,241,242,
-# 		250,251,252,
-# 		260,261,262,
-# 		270,271,272,
+## QRS, milivolt, all nodes/ MI
+# column = [14,4,5,6,7,8,
+# 			15, 17, 25, 26, 
+# 			27, 29, 37, 38, 
+# 			39, 41, 49, 50, 
+# 			51, 53, 61, 62, 
+# 			63, 65, 73, 74, 
+# 			75, 77, 85, 86, 
+# 			87, 89, 97, 98, 
+# 			99, 101, 109, 110, 
+# 			111, 113, 121, 122, 
+# 			123, 125, 133, 134, 
+# 			135, 137, 145, 146, 
+# 			147, 149, 157, 158,
+# 			160, 162, 166, 
+# 			170, 172, 176, 
+# 			180, 182, 186, 
+# 			190, 192, 196, 
+# 			200, 202, 206, 
+# 			210, 212, 216, 
+# 			220, 222, 226, 
+# 			230, 232, 236, 
+# 			240, 242, 246, 
+# 			250, 252, 256, 
+# 			260, 262, 266, 
+# 			270, 272, 276
 # 		]
-# QRS, duration msec, QRS milivolt, all nodes
-# column = [1,14,
+# QRS, duration msec, QRS milivolt, all nodes/ ST,SB
+column = [1,14,
 # 		15, 16, 17, 
 # 		27, 28, 29, 
 # 		39, 40, 41, 
@@ -61,8 +73,36 @@ y = np.loadtxt("y_main.dat")
 # 		250,251,252,
 # 		260,261,262,
 # 		270,271,272,
+ 		]
+## QRS, duration msec and QRS, milivolt, all nodes/RBBB
+# column = [
+# 		16, 17, 18, 
+# 		28, 29, 30, 
+# 		40, 41, 42, 
+# 		52, 53, 54, 
+# 		64, 65, 66, 
+# 		76, 77, 78, 
+# 		88, 89, 90, 
+# 		100, 101, 102, 
+# 		112, 113, 114, 
+# 		124, 125, 126, 
+# 		136, 137, 138, 
+# 		148, 149, 150,
+# 		160,161,162, 
+# 		170,171,172, 
+# 		180,181,182, 
+# 		190,191,192,
+# 		200,201,202,
+# 		210,211,212,
+# 		220,221,222,
+# 		230,231,232,
+# 		240,241,242,
+# 		250,251,252,
+# 		260,261,262,
+# 		270,271,272,
 # 		]
-# # ## QS, duration msec, QST milivolt,  HRate, QRS PR QT T P interval, ragged T wave, diphasic T, all 12 nodes
+
+# # ## QS, duration msec, QST milivolt,  HRate, QRS PR QT T P interval, ragged T wave, diphasic T, all 12 nodes/CAD
 # column = [14,4,5,6,7,8,
 # 			15, 17, 25, 26, 
 # 			27, 29, 37, 38, 
@@ -97,13 +137,14 @@ row_del = []
 # print(x_temp.shape)
 # print(y.shape)
 # print(X[:,160])
-disease = 10
+disease = 6
 
 c=0
 for i in y:
-    if(i!=1 and i!=disease):
+   # if(i!=1 and i!=3 and i!=4): #only for MI
+   if(i!=1 and i!=disease):
        row_del.append(c)
-    c+=1
+   c+=1
 
 # print(row_del)       
 x_temp = np.delete(x_temp, row_del, 0)

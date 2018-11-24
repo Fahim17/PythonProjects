@@ -5,12 +5,12 @@ from sklearn.cross_validation import train_test_split, cross_val_score
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix
 
-#X = np.loadtxt("X_main.dat")
-#y = np.loadtxt("y_main.dat")
+# X = np.loadtxt("X_main.dat")
+# y = np.loadtxt("y_main.dat")
 ##############################
 # X = np.loadtxt("X_final.dat")
 # y = np.loadtxt("y_final.dat")
-##############################
+# ##############################
 X = np.loadtxt("data_ex/X_all_pqrst.dat")
 y = np.loadtxt("data_ex/y_all_pqrst.dat")
 ############################## data scaling ##############################
