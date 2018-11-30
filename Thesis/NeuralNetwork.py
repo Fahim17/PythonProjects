@@ -26,13 +26,18 @@ sc = StandardScaler()
 X_train = sc.fit_transform(X_train)
 X_test = sc.fit_transform(X_test)
 #print(X_test)
+neuron = 50
+accy = []
+for i in range(1,9):
 
 ############################## Cross Validation #############################
-classifier =  MLPClassifier(hidden_layer_sizes=(50,50,50),max_iter=5000) #lab a run korate hobe
-
-scores = cross_val_score(classifier, X, y, cv=10, scoring = 'accuracy')
-print("CV score = ",scores.mean())
-
+    classifier =  MLPClassifier(hidden_layer_sizes=(neuron,neuron,neuron),max_iter=5000) #lab a run korate hobe
+    
+    scores = cross_val_score(classifier, X, y, cv=10, scoring = 'accuracy')
+#    print("CV score = ",scores.mean())
+    accy.append(scores.mean())
+    neuron +=50
+print(accy, neuron)
 #################Fitting Classifier to the training set#################
 
 classifier.fit(X_train,y_train)
@@ -65,4 +70,19 @@ print("NPV: {:0.2f}".format(NPV))
 
 ACC = (TP+TN)/(TP+TN+FP+FN)
 print("ACC: {:0.2f}".format(ACC))
+##################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

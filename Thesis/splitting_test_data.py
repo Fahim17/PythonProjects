@@ -10,7 +10,7 @@ y = np.loadtxt("y_main.dat")
 #05             Sinus tachycardy			           13
 #06             Sinus bradycardy			           25
 #10             Right bundle branch block		           50
-disease = 2
+disease = 10
 testD = 10
 
 #column = [
@@ -85,9 +85,9 @@ while(t<testD):
 		y = np.delete(y, rnd, 0)
 		t+=1
 testSampleX = np.delete(testSampleX, 0, 0)
-
+print("testSample: ",testSampleX.shape)
 print("disease: ",disease)
-print("test sample: ",testD*2)
+#print("test sample: ",testD*2)
 
 np.savetxt('test/X_train.dat', x_temp, fmt='%1.4e')    
 np.savetxt('test/y_train.dat', y, fmt='%1.4e')

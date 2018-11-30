@@ -5,6 +5,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import confusion_matrix
 from sklearn.neural_network import MLPClassifier
 Accy = []
+neuron = 50
+maxita = 5000
 print("**************** Running Artificial Neural Network ****************")
 ####################################### Disease: RBBB #########################
 print("****************Disease: RBBB****************")
@@ -52,7 +54,7 @@ X_test = sc.fit_transform(X_test)
 print("Train:",X_train.shape)
 print("Test:",X_test.shape)
 
-classifier = MLPClassifier(hidden_layer_sizes=(74,74,74),max_iter=5000)
+classifier = MLPClassifier(hidden_layer_sizes=(neuron,neuron,neuron),max_iter=maxita)
 classifier.fit(X_train,y_train)
 
 y_pred = classifier.predict(X_test)
@@ -128,7 +130,7 @@ print("Train:",X_train.shape)
 print("Test:",X_test.shape)
 
 
-classifier = MLPClassifier(hidden_layer_sizes=(74,74,74),max_iter=5000)
+classifier = MLPClassifier(hidden_layer_sizes=(neuron,neuron,neuron),max_iter=maxita)
 classifier.fit(X_train,y_train)
 
 y_pred = classifier.predict(X_test)
@@ -204,7 +206,7 @@ print("Train:",X_train.shape)
 print("Test:",X_test.shape)
 
 
-classifier = MLPClassifier(hidden_layer_sizes=(74,74,74),max_iter=5000)
+classifier = MLPClassifier(hidden_layer_sizes=(neuron,neuron,neuron),max_iter=maxita)
 classifier.fit(X_train,y_train)
 
 y_pred = classifier.predict(X_test)
@@ -280,7 +282,7 @@ print("Train:",X_train.shape)
 print("Test:",X_test.shape)
 
 
-classifier = MLPClassifier(hidden_layer_sizes=(74,74,74),max_iter=5000)
+classifier = MLPClassifier(hidden_layer_sizes=(neuron,neuron,neuron),max_iter=maxita)
 classifier.fit(X_train,y_train)
 
 y_pred = classifier.predict(X_test)
@@ -356,7 +358,7 @@ print("Train:",X_train.shape)
 print("Test:",X_test.shape)
 
 
-classifier = LogisticRegression(random_state = 0)
+classifier = MLPClassifier(hidden_layer_sizes=(neuron,neuron,neuron),max_iter=maxita)
 classifier.fit(X_train,y_train)
 
 y_pred = classifier.predict(X_test)
@@ -387,7 +389,10 @@ Accy.append(ACC)
 ################################################################
 ############################## Plot ##################################
 # print(Accy)
-plt.title('Artificial Neural Network\n')
+fig = plt.figure(figsize=[10, 10])
+ax = fig.add_subplot(111)
+
+ax.set_title('Artificial Neural Network\n')
 # Data to plot
 labels = 'RBBB', 'Coronary Artery Block', 'Myocardial\nInfarction', 'Sinus Tachycardy', 'Sinus Bradycardy'
 colors = ['gold', 'yellowgreen', 'lightcoral', 'lightskyblue', 'pink']
@@ -401,9 +406,9 @@ print(Bccy)
 high[maxIndx] = 0.1
 explode = tuple(high)
 
-plt.tight_layout()
+#plt.tight_layout()
 # Plot
-patches = plt.pie(Accy, explode=explode, labels=labels, colors=colors,
+ax.pie(Accy, explode=explode, labels=labels, colors=colors,
         autopct='%1.1f%%', shadow=True, startangle=140)
 # plt.legend(patches, labels, loc="best")
 plt.axis('equal')
