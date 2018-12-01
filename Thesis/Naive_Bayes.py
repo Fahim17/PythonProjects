@@ -4,6 +4,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.cross_validation import train_test_split, cross_val_score
 import sklearn.naive_bayes as nb
 from sklearn.metrics import confusion_matrix
+from sklearn import metrics as ms
 
 # X = np.loadtxt("X_main.dat")
 # y = np.loadtxt("y_main.dat")
@@ -69,3 +70,15 @@ print("NPV: {:0.2f}".format(NPV))
 ACC = (TP+TN)/(TP+TN+FP+FN)
 print("ACC: {:0.2f}".format(ACC))
 
+ ############################## ############################## ##############################
+
+fpr, tpr, thresholds = ms.roc_curve(y_test, y_pred)
+print(list(fpr))
+print(list(tpr))
+roc_fpr = np.loadtxt("ROC_fpr.dat")
+roc_tpr = np.loadtxt("ROC_tpr.dat")
+
+fy = np.vstack((roc_fpr,fpr))
+ty = np.vstack((roc_tpr,tpr))
+np.savetxt('ROC_fpr.dat', fy, fmt='%.3e')
+np.savetxt('ROC_tpr.dat', ty, fmt='%.3e')

@@ -4,7 +4,9 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.cross_validation import train_test_split, cross_val_score
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix
+from sklearn import metrics as ms
 from imblearn.over_sampling import SMOTE
+import matplotlib.pyplot as plt
 
 # X = np.loadtxt("X_main.dat")
 # y = np.loadtxt("y_main.dat")
@@ -71,55 +73,69 @@ unique, counts = np.unique(y_train, return_counts=True)
 unique = [0,1]
 oz_count = dict(zip(unique, counts))
 print("datacount: ",oz_count)
-###################### SMOTE #############################
-
-smt = SMOTE()
-Xs, ys = smt.fit_sample(X, y)
-
+# ###################### SMOTE #############################
+# print("After using SMOTE:")
+# smt = SMOTE(random_state=12, ratio = 1.0)
+# # Xs, ys = smt.fit_sample(X, y)
+# X_train, y_train = smt.fit_sample(X_train, y_train)
 # unique, counts = np.unique(y_train, return_counts=True)
 # unique = [0,1]
 # oz_count = dict(zip(unique, counts))
 # print(oz_count)
 
-X_train,X_test,y_train,y_test = train_test_split(Xs,ys,test_size=0.25,random_state=0)
+# # X_train,X_test,y_train,y_test = train_test_split(Xs,ys,test_size=0.25,random_state=0)
 
-# Feature scaling
-sc = StandardScaler()
-X_train = sc.fit_transform(X_train)
-X_test = sc.fit_transform(X_test)
+# # Feature scaling
+# sc = StandardScaler()
+# X_train = sc.fit_transform(X_train)
+# X_test = sc.fit_transform(X_test)
 
-scores = cross_val_score(classifier, Xs, ys, cv=10, scoring = 'accuracy')
-print("After using SMOTE:")
-print("CV score = ",scores.mean())
+# scores = cross_val_score(classifier, X_train, y_train, cv=10, scoring = 'accuracy')
 
-classifier.fit(X_train,y_train)
+# print("CV score = ",scores.mean())
 
-# Predicting the Test set results
-y_pred = classifier.predict(X_test)
+# classifier.fit(X_train,y_train)
 
-#print("Y_pred: \n",y_pred)
+# # Predicting the Test set results
+# y_pred = classifier.predict(X_test)
 
-# Making the confusion matrix 
-cm = confusion_matrix(y_test,y_pred)
-print(cm)
+# #print("Y_pred: \n",y_pred)
 
-TN = cm[0,0]
-FP = cm[0,1]
-FN = cm[1,0]
-TP = cm[1,1]
+# # Making the confusion matrix 
+# cm = confusion_matrix(y_test,y_pred)
+# print(cm)
+
+# TN = cm[0,0]
+# FP = cm[0,1]
+# FN = cm[1,0]
+# TP = cm[1,1]
 
 
-TPR = (TP/(TP+FN)) 
-print("TPR: {:0.2f}".format(TPR))
+# TPR = (TP/(TP+FN)) 
+# print("TPR: {:0.2f}".format(TPR))
 
-TNR = (TN/(TN+FP)) 
-print("TNR: {:0.2f}".format(TNR))
+# TNR = (TN/(TN+FP)) 
+# print("TNR: {:0.2f}".format(TNR))
 
-PPV = (TP/(TP+FP)) 
-print("PPV: {:0.2f}".format(PPV))
+# PPV = (TP/(TP+FP)) 
+# print("PPV: {:0.2f}".format(PPV))
 
-NPV = (TN/(TN+FN)) 
-print("NPV: {:0.2f}".format(NPV))
+# NPV = (TN/(TN+FN)) 
+# print("NPV: {:0.2f}".format(NPV))
 
-ACC = (TP+TN)/(TP+TN+FP+FN)
-print("ACC: {:0.2f}".format(ACC))
+# ACC = (TP+TN)/(TP+TN+FP+FN)
+# print("ACC: {:0.2f}".format(ACC))
+
+ ############################## ############################## ##############################
+
+# fpr, tpr, thresholds = ms.roc_curve(y_test, y_pred)
+
+# print(list(fpr))
+# print(list(tpr))
+
+# np.savetxt('ROC_fpr.dat', fpr, fmt='%.3e')
+# np.savetxt('ROC_tpr.dat', tpr, fmt='%.3e')
+
+
+# plt.plot(fpr, tpr)
+# plt.show()
