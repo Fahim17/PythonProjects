@@ -71,58 +71,58 @@ print("NPV: {:0.2f}".format(NPV))
 
 ACC = (TP+TN)/(TP+TN+FP+FN)
 print("ACC: {:0.2f}".format(ACC))
-###################### SMOTE #############################
-print("After using SMOTE:")
-smt = SMOTE(random_state=12, ratio = 1.0)
-# Xs, ys = smt.fit_sample(X, y)
-X_train, y_train = smt.fit_sample(X_train, y_train)
-unique, counts = np.unique(y_train, return_counts=True)
-unique = [0,1]
-oz_count = dict(zip(unique, counts))
-print(oz_count)
+# ###################### SMOTE #############################
+# print("After using SMOTE:")
+# smt = SMOTE(random_state=12, ratio = 1.0)
+# # Xs, ys = smt.fit_sample(X, y)
+# X_train, y_train = smt.fit_sample(X_train, y_train)
+# unique, counts = np.unique(y_train, return_counts=True)
+# unique = [0,1]
+# oz_count = dict(zip(unique, counts))
+# print(oz_count)
 
-# X_train,X_test,y_train,y_test = train_test_split(Xs,ys,test_size=0.25,random_state=0)
+# # X_train,X_test,y_train,y_test = train_test_split(Xs,ys,test_size=0.25,random_state=0)
 
-# Feature scaling
-sc = StandardScaler()
-X_train = sc.fit_transform(X_train)
-X_test = sc.fit_transform(X_test)
+# # Feature scaling
+# sc = StandardScaler()
+# X_train = sc.fit_transform(X_train)
+# X_test = sc.fit_transform(X_test)
 
-scores = cross_val_score(classifier, X_train, y_train, cv=10, scoring = 'accuracy')
+# scores = cross_val_score(classifier, X_train, y_train, cv=10, scoring = 'accuracy')
 
-print("CV score = ",scores.mean())
+# print("CV score = ",scores.mean())
 
-classifier.fit(X_train,y_train)
+# classifier.fit(X_train,y_train)
 
-# Predicting the Test set results
-y_pred = classifier.predict(X_test)
+# # Predicting the Test set results
+# y_pred = classifier.predict(X_test)
 
-#print("Y_pred: \n",y_pred)
+# #print("Y_pred: \n",y_pred)
 
-# Making the confusion matrix 
-cm = confusion_matrix(y_test,y_pred)
-print(cm)
+# # Making the confusion matrix 
+# cm = confusion_matrix(y_test,y_pred)
+# print(cm)
 
-TN = cm[0,0]
-FP = cm[0,1]
-FN = cm[1,0]
-TP = cm[1,1]
+# TN = cm[0,0]
+# FP = cm[0,1]
+# FN = cm[1,0]
+# TP = cm[1,1]
 
 
-TPR = (TP/(TP+FN)) 
-print("TPR: {:0.2f}".format(TPR))
+# TPR = (TP/(TP+FN)) 
+# print("TPR: {:0.2f}".format(TPR))
 
-TNR = (TN/(TN+FP)) 
-print("TNR: {:0.2f}".format(TNR))
+# TNR = (TN/(TN+FP)) 
+# print("TNR: {:0.2f}".format(TNR))
 
-PPV = (TP/(TP+FP)) 
-print("PPV: {:0.2f}".format(PPV))
+# PPV = (TP/(TP+FP)) 
+# print("PPV: {:0.2f}".format(PPV))
 
-NPV = (TN/(TN+FN)) 
-print("NPV: {:0.2f}".format(NPV))
+# NPV = (TN/(TN+FN)) 
+# print("NPV: {:0.2f}".format(NPV))
 
-ACC = (TP+TN)/(TP+TN+FP+FN)
-print("ACC: {:0.2f}".format(ACC))
+# ACC = (TP+TN)/(TP+TN+FP+FN)
+# print("ACC: {:0.2f}".format(ACC))
  ############################## ############################## ##############################
 
 fpr, tpr, thresholds = ms.roc_curve(y_test, y_pred)

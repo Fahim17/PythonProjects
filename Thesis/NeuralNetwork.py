@@ -10,23 +10,23 @@ from sklearn import metrics as ms
 # X = np.loadtxt("X_main.dat")
 # y = np.loadtxt("y_main.dat")
 
-#X = np.loadtxt("X_final.dat")
-#y = np.loadtxt("y_final.dat")
+X = np.loadtxt("X_final.dat")
+y = np.loadtxt("y_final.dat")
 ##############################
-X = np.loadtxt("X_all_pqrst.dat")
-y = np.loadtxt("y_all_pqrst.dat")
+# X = np.loadtxt("X_all_pqrst.dat")
+# y = np.loadtxt("y_all_pqrst.dat")
 ############################## data scaling ##############################
 # Normalize data ####{over all accuracy will be reduce}
 #X = preprocessing.normalize(X, norm='l1')
-X = preprocessing.normalize(X, norm='l2') #ektu better hoy
+# X = preprocessing.normalize(X, norm='l2') #ektu better hoy
 
 # Split the data into Training and Testing set
 X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.25,random_state=0)
 
 # Feature scaling
-sc = StandardScaler()
-X_train = sc.fit_transform(X_train)
-X_test = sc.fit_transform(X_test)
+# sc = StandardScaler()
+# X_train = sc.fit_transform(X_train)
+# X_test = sc.fit_transform(X_test)
 #print(X_test)
 neuron = 50
 accy = []
@@ -42,7 +42,7 @@ accy = []
 # print(accy, neuron)
 
 ############################## Cross Validation #############################
-classifier =  MLPClassifier(hidden_layer_sizes=(neuron,neuron,neuron),max_iter=5000) #lab a run korate hobe
+classifier =  MLPClassifier(hidden_layer_sizes=(neuron,neuron,neuron),max_iter=500) #lab a run korate hobe
     
 scores = cross_val_score(classifier, X, y, cv=10, scoring = 'accuracy')
 print("CV score = ",scores.mean())
